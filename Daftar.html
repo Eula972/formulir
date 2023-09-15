@@ -1,0 +1,127 @@
+<script>
+function validasiForm() {
+    var nama = document.getElementById('nama').value;
+    var ketua = document.getElementById('ketua').value;
+    var nomorHp = document.getElementById('nomorHp').value;
+    var foto = document.getElementById('foto').files[0]; // Ambil file foto
+
+    // Validasi nama tim tidak boleh kosong dan hanya huruf
+    if (nama == "" || !/^[a-zA-Z\s]+$/.test(nama)) {
+        alert("Nama tim tidak boleh kosong dan hanya boleh berisi huruf.");
+        return false;
+    }
+    // Validasi nama ketua tidak boleh kosong dan hanya huruf
+    if (ketua == "" || !/^[a-zA-Z\s]+$/.test(ketua)) {
+        alert("Nama ketua tidak boleh kosong dan hanya boleh berisi huruf.");
+        return false;
+    }
+
+    // Validasi nomor HP maksimal 11 karakter
+    if (nomorHp.length > 11) {
+        alert("Nomor HP maksimal 11 karakter.");
+        return false;
+    }
+
+    // Validasi nomor HP hanya boleh angka
+    if (!/^\d+$/.test(nomorHp)) {
+        alert("Nomor HP hanya boleh berisi angka.");
+        return false;
+    }
+
+    // Validasi ukuran file foto maksimal 2 MB
+    if (foto && foto.size > 2 * 1024 * 1024) {
+        alert("Ukuran file foto tidak boleh lebih dari 2 MB.");
+        return false;
+    }
+
+    return true;
+}
+</script>
+<html>
+
+<head>
+
+
+</head>
+
+<body>
+    <link rel="stylesheet" href="bor.css">
+    <form action="" method="POST" enctype="multipart/form-data" onsubmit="return validasiForm()">
+        <div align="center">
+            <div class="border" align="center">
+                <h1> Pendaftaran Lomba Volly</h1>
+                <h2> antar rt/rw</h2>
+
+                <table>
+                    <tr>
+                        <td>Nama Tim</td>
+                        <td>:</td>
+                        <td></td>
+                        <td><input type="text" name=" nama" placeholder="Masukkan Nama Tim" id="nama" required></td>
+                    </tr>
+
+                    <tr>
+                        <td>Jumlah anggota</td>
+                        <td>:</td>
+                        <td></td>
+                        <td><input type="number" name="jml" placeholder="Masukkan Jumlah anggota" required></td>
+                    </tr>
+
+                    <tr>
+                        <td>Asal</td>
+                        <td>:</td>
+                        <td>RT</td>
+                        <td><input type="number" name="rt" placeholder="Masukkan RT" required></td>
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>RW</td>
+                        <td><input type="number" name="rw" placeholder="Masukkan RW" required></td>
+                    </tr>
+
+                    <tr>
+                        <td>Nama Ketua Tim</td>
+                        <td>:</td>
+                        <td></td>
+                        <td><input type="text" name="ketua" placeholder="Masukkan Nama Ketua" id="ketua" required></td>
+                    </tr>
+
+                    <tr>
+                        <td>NO HP Ketua Tim</td>
+                        <td>:</td>
+                        <td></td>
+                        <td><input type="text" name="hp" placeholder="Masukkan NO HP Ketua" id="nomorHp"
+                               required></td>
+                    </tr>
+                    <tr>
+                        <td>Tanggal Pendaftaran</td>
+                        <td>:</td>
+                        <td></td>
+                        <td><input type="date" name="tgl" placeholder="Masukkan Tanggal Pendaftaran" required></td>
+                    </tr>
+                    <tr>
+                        <td>Upload Foto KTP Ketua Tim</td>
+                        <td>:</td>
+                        <td></td>
+                        <td><input type="file" id="foto" name="ktp" required></td>
+                    </tr>
+
+                    <tr>
+                        <td>Tim</td>
+                        <td>:</td>
+                        <td></td>
+                        <td><input type="radio" name="Tim" value="Laki-laki">laki-laki
+                            <input type="radio" name="Tim" value="Perempuan">Perempuan
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <input type="submit" name="submit" id="" value="daftar"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+</body>
+
+</html>
